@@ -33,21 +33,10 @@ io.on('connection', (socket) => {
   message.generateMessage('Admin', 'New user has joined')
   );
 
-  socket.on('createMessage', (msg) => {
+  socket.on('createMessage', (msg, callback) => {
     console.log('createMessage', msg);
-    io.emit('newMessage', 
-    // {
-    //   from: message.from,
-    //   text: message.text,
-    //   createdAt: new Date().getTime()
-    //}
-    message.generateMessage(msg.from, msg.text)
-    );
-    // socket.broadcast.emit('newMessage', {
-    //   from: message.from,
-    //   text: message.text,
-    //   createdAt: new Date().getTime()
-    // });
+    io.emit('newMessage', message.generateMessage(msg.from, msg.text));
+    callback('This is from the server');   
   });
 
   socket.on('disconnect', () => {
