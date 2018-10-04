@@ -45,7 +45,9 @@ io.on('connection', (socket) => {
 
   socket.on('createLocationMessage',(location)=>
   {
-    io.emit('newMessage', message.generateMessage('Admin', `${location.latitude} ${location.longitude}`));
+    console.log(location);
+    io.emit('newLocationMessage', 
+    message.generateLocationMessage('Admin', location.latitude, location.longitude));
   });
 
 });
