@@ -1,4 +1,5 @@
 var socket = io();
+var user;
 
 function scrollToBottom()
 {
@@ -21,7 +22,8 @@ function scrollToBottom()
 socket.on('connect', function () {
   console.log('Connected to server');
   var params = jQuery.deparam(window.location.search);
-
+  console.log(params);
+  user = params.name;
   socket.emit('join', params, function(err)
   {
     if(err){
@@ -88,7 +90,7 @@ sendButton.on('submit',function(e){
   e.preventDefault();
   console.log(messageTextBox.val());
   socket.emit('createMessage',{
-    from: 'User',
+    from: user,//'User',
     text: messageTextBox.val()
   },function(){
     messageTextBox.val('');
