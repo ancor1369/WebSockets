@@ -1,6 +1,8 @@
 var socket = io();
 var user;
 
+var header = document.getElementById("Wlm_message");
+
 function scrollToBottom()
 {
   //Selectors
@@ -21,6 +23,7 @@ function scrollToBottom()
 
 socket.on('connect', function () {
   console.log('Connected to server');
+  header.innerHTML = "Connected to server";
   var params = jQuery.deparam(window.location.search);
   console.log(params);
   user = params.name;
