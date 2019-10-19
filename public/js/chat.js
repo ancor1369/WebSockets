@@ -40,6 +40,7 @@ socket.on('connect', function () {
 
 socket.on('disconnect', function () {
   console.log('Disconnected from server');
+  header.innerHTML = "User disconnected";
 });
 
 socket.on('updateUserList', function(users){
@@ -58,8 +59,9 @@ socket.on('updateUserList', function(users){
 
 
 socket.on('newMessage', function (message) {
-  console.log(message);
+  console.log(message);  
   var formattedTime = moment(message.createdAt).format('h:mm a');
+  header.innerHTML = "Last message received at: " + formattedTime;
   var template = jQuery('#message-template').html();
   var html = Mustache.render(template,  
     {
