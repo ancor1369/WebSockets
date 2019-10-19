@@ -30,3 +30,5 @@ Server is up on 3000
 ```
 
 Once the server is runnig, you can open a web browser and head to localhost:3000, Once you have one web broser open, open another instance of the web browser and head to the same url localhost:3000, Then you can log to the same room and start interacting.
+
+This is a project that is updated every time we want to put in place new changes.
